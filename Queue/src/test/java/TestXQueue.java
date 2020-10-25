@@ -48,13 +48,15 @@ public class TestXQueue {
         Assert.assertEquals(0, this.q.size());
     }
 
-    @Test
+    @Test(expected = EmptyQueueException.class)
     public void TestPop2() throws Exception
     {
         Assert.assertEquals(3, this.q.size());
         this.q.pop();
         this.q.pop();
-        Assert.assertEquals(1, this.q.size());
+        this.q.pop();
+        this.q.pop();
+        Assert.assertEquals(-1, this.q.size());
     }
 
     @After
